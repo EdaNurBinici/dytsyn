@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VKİ Hesapla | Dyt. Eda Yılmaz</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+--green-deep: #2d6a4f;
+--green-mid: #52b788;
+--green-light: #b7e4c7;
+--green-pale: #d8f3dc;
+--orange-soft: #f4a261;
+--cream: #fdfaf6;
+--white: #ffffff;
+--dark: #1a2e23;
+--gray: #6b7280;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); }
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+background: rgba(253,250,246,0.92);
+backdrop-filter: blur(16px);
+border-bottom: 1px solid rgba(45,106,79,0.08);
+padding: 0 2rem;
+height: 70px;
+display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+font-family: 'Playfair Display', serif;
+font-size: 1.4rem; font-weight: 700;
+color: var(--green-deep);
+text-decoration: none;
+}
+.nav-logo span { color: var(--orange-soft); }
+.nav-links { display: flex; gap: 0.5rem; align-items: center; list-style: none; }
+.nav-links a {
+font-size: 0.92rem; font-weight: 500;
+color: var(--dark); text-decoration: none;
+padding: 0.45rem 0.9rem; border-radius: 40px;
+transition: 0.3s;
+}
+.nav-links a:hover { background: var(--green-pale); color: var(--green-deep); }
+.nav-links .cta-nav {
+background: var(--green-deep); color: var(--white);
+padding: 0.5rem 1.2rem; border-radius: 40px;
+font-weight: 600;
+}
+.nav-links .cta-nav:hover { background: var(--green-mid); }
+.container { max-width: 1200px; margin: 0 auto; padding: 100px 2rem 3rem; }
+h1 { font-family: 'Playfair Display', serif; font-size: 2.6rem; margin-bottom: 1rem; color: var(--dark); }
+.vki-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+.vki-form-card {
+background: var(--cream); border-radius: 18px;
+padding: 2.5rem; border: 1px solid var(--green-pale);
+}
+.input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.input-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--dark); margin-bottom: 0.4rem; }
+.input-group input, .input-group select {
+width: 100%; padding: 0.8rem 1rem; border-radius: 12px;
+border: 1.5px solid var(--green-light); background: var(--white);
+font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: var(--dark);
+transition: 0.3s;
+outline: none;
+}
+.input-group input:focus, .input-group select:focus { border-color: var(--green-mid); box-shadow: 0 0 0 3px rgba(82,183,136,0.12); }
+.btn-primary {
+background: var(--green-deep); color: var(--white);
+border: none; border-radius: 40px; padding: 0.85rem 2rem;
+font-size: 0.95rem; font-weight: 600; cursor: pointer;
+transition: 0.3s;
+text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+width: 100%;
+justify-content: center;
+}
+.btn-primary:hover { background: var(--green-mid); }
+.vki-result-box {
+background: var(--white); border-radius: 16px; padding: 1.5rem;
+margin-top: 1.5rem; border: 2px solid var(--green-light);
+display: none; text-align: center;
+}
+.vki-result-box.show { display: block; }
+.vki-number { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700; color: var(--green-deep); }
+.vki-label { font-size: 0.9rem; font-weight: 600; margin: 0.3rem 0; }
+.vki-desc { font-size: 0.82rem; color: var(--gray); margin-bottom: 1rem; }
+.vki-scale-bar { height: 10px; border-radius: 10px; background: linear-gradient(to right, #74c0fc, #69db7c, #ffd43b, #ff922b, #fa5252); position: relative; margin: 0.5rem 0; }
+.vki-scale-marker { position: absolute; top: -4px; width: 18px; height: 18px; background: var(--dark); border-radius: 50%; transform: translateX(-50%) scaleX(0); transition: all 0.6s; }
+.vki-scale-labels { display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--gray); }
+.vki-info { background: var(--green-pale); border-radius: 18px; padding: 2rem; }
+.vki-info h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 1.5rem; color: var(--dark); }
+.vki-range { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.vki-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; }
+.vki-range-text { font-size: 0.88rem; }
+.vki-range-text strong { color: var(--dark); }
+.vki-range-text span { color: var(--gray); }
+.vki-cta { background: var(--orange-soft); color: var(--white); border: none; border-radius: 40px; padding: 0.8rem 1.8rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; transition: 0.3s; width: 100%; }
+.vki-cta:hover { background: #e8924a; }
+@media (max-width: 900px) {
+.vki-wrap { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<nav>
+<a href="index.html" class="nav-logo">Dyt. Eda <span>Yılmaz</span></a>
+<ul class="nav-links">
+<li><a href="hakkinda.html">Hakkımda</a></li>
+<li><a href="hizmetler.html">Hizmetler</a></li>
+<li><a href="vki.html">VKİ Hesapla</a></li>
+<li><a href="hikayeler.html">Başarı Hikayeleri</a></li>
+<li><a href="blog.html">Blog</a></li>
+<li><a href="paketler.html">Paketler</a></li>
+<li><a href="randevu.html" class="cta-nav">Randevu Al</a></li>
+</ul>
+</nav>
+
+<div class="container">
+<div class="vki-wrap">
+<div>
+<h1>Vücut Kitle İndeksinizi Hesaplayın</h1>
+<p style="color:var(--gray);margin-bottom:2rem">Birkaç saniyede kilonuzun sağlığınız için ne ifade ettiğini öğrenin.</p>
+<div class="vki-form-card">
+<div class="input-row">
+<div class="input-group"><label>Boy (cm)</label><input type="number" id="boy" placeholder="örn. 165" min="100" max="220"></div>
+<div class="input-group"><label>Kilo (kg)</label><input type="number" id="kilo" placeholder="örn. 68" min="30" max="250"></div>
+</div>
+<div class="input-row">
+<div class="input-group"><label>Yaş</label><input type="number" id="yas" placeholder="örn. 32" min="15" max="100"></div>
+<div class="input-group"><label>Cinsiyet</label><select id="cinsiyet"><option value="">Seçiniz</option><option value="kadin">Kadın</option><option value="erkek">Erkek</option></select></div>
+</div>
+<button class="btn-primary" onclick="hesaplaVKI()">Hesapla →</button>
+<div class="vki-result-box" id="vkiResult">
+<div class="vki-number" id="vkiSayi"></div>
+<div class="vki-label" id="vkiLabel"></div>
+<div class="vki-desc" id="vkiDesc"></div>
+<div style="margin-top:1rem">
+<div class="vki-scale-bar"><div class="vki-scale-marker" id="vkiMarker"></div></div>
+<div class="vki-scale-labels"><span>16</span><span>18.5</span><span>25</span><span>30</span><span>40</span></div>
+</div>
+<br>
+<button class="vki-cta" onclick="window.location.href='randevu.html'">📅 Size Özel Program İçin Randevu Alın</button>
+</div>
+</div>
+</div>
+<div class="vki-info">
+<h3>VKİ Değerleri Ne Anlama Gelir?</h3>
+<div class="vki-range"><div class="vki-dot" style="background:#74c0fc"></div><div class="vki-range-text"><strong>16 – 18.5</strong> <span>| Zayıf</span></div></div>
+<div class="vki-range"><div class="vki-dot" style="background:#69db7c"></div><div class="vki-range-text"><strong>18.5 – 24.9</strong> <span>| Normal Kilolu</span></div></div>
+<div class="vki-range"><div class="vki-dot" style="background:#ffd43b"></div><div class="vki-range-text"><strong>25 – 29.9</strong> <span>| Fazla Kilolu</span></div></div>
+<div class="vki-range"><div class="vki-dot" style="background:#ff922b"></div><div class="vki-range-text"><strong>30 – 34.9</strong> <span>| Obez (1. Derece)</span></div></div>
+<div class="vki-range"><div class="vki-dot" style="background:#fa5252"></div><div class="vki-range-text"><strong>35 +</strong> <span>| Obez (2–3. Derece)</span></div></div>
+</div>
+</div>
+</div>
+
+<script>
+function hesaplaVKI() {
+  const boy = parseFloat(document.getElementById('boy').value);
+  const kilo = parseFloat(document.getElementById('kilo').value);
+  if (!boy || !kilo || boy < 50 || kilo < 10) {
+    alert('Lütfen geçerli boy ve kilo değerleri girin.');
+    return;
+  }
+  const boyM = boy / 100;
+  const vki = kilo / (boyM * boyM);
+  const vkiRounded = vki.toFixed(1);
+  let label, desc, color;
+  if (vki < 16) { label='Çok Zayıf'; desc='Vücut ağırlığınız kritik düzeyde düşük. Mutlaka uzman desteği almanızı öneririz.'; color='#74c0fc'; }
+  else if (vki < 18.5) { label='Zayıf'; desc='Normal kilonun altındasınız. Beslenme programı ile sağlıklı kilo almanız mümkün.'; color='#94d2bd'; }
+  else if (vki < 25) { label='✅ Normal Kilolu'; desc='Tebrikler! Kilonuz sağlıklı aralıkta. Bu alışkanlıklarınızı sürdürün.'; color='#69db7c'; }
+  else if (vki < 30) { label='⚠️ Fazla Kilolu'; desc='Sağlık riskinizi azaltmak için kilo kontrolü önerilir. Bir beslenme uzmanıyla görüşün.'; color='#ffd43b'; }
+  else if (vki < 35) { label='🔴 1. Derece Obez'; desc='Sağlık riskleri artmaktadır. Tıbbi beslenme tedavisi ve uzman takibi önemlidir.'; color='#ff922b'; }
+  else { label='🔴 2-3. Derece Obez'; desc='Acil uzman desteği gereklidir. Birlikte sağlıklı bir programa başlayalım.'; color='#fa5252'; }
+  
+  document.getElementById('vkiSayi').textContent = vkiRounded;
+  document.getElementById('vkiSayi').style.color = color;
+  document.getElementById('vkiLabel').textContent = label;
+  document.getElementById('vkiLabel').style.color = color;
+  document.getElementById('vkiDesc').textContent = desc;
+  
+  const marker = document.getElementById('vkiMarker');
+  const minVki = 16, maxVki = 40;
+  let pct = Math.min(Math.max((vki - minVki) / (maxVki - minVki) * 100, 2), 98);
+  marker.style.left = pct + '%';
+  marker.style.transform = 'translateX(-50%) scaleX(1)';
+  
+  const result = document.getElementById('vkiResult');
+  result.classList.add('show');
+}
+</script>
+
+<!-- FOOTER -->
+<footer style="background: var(--dark); color: rgba(255,255,255,0.6); padding: 3rem 2rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 5rem;">
+<div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem;">
+<div><a href="index.html" class="nav-logo" style="display: block; margin-bottom: 1rem; font-size: 1.2rem; color: var(--green-mid);">Dyt. Eda <span style="color: var(--orange-soft);">Yılmaz</span></a><p style="font-size: 0.85rem; line-height: 1.7; max-width: 260px; color: rgba(255,255,255,0.6);">Bilimsel beslenme danışmanlığı ile sağlıklı, mutlu ve enerjik bir yaşam için yanınızdayım.</p></div>
+<div><h4 style="color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem;">Sayfalar</h4><a href="hakkinda.html" style="display: block; font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem;">Hakkımda</a><a href="hizmetler.html" style="display: block; font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem;">Hizmetler</a><a href="hikayeler.html" style="display: block; font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem;">Başarı Hikayeleri</a><a href="blog.html" style="display: block; font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem;">Blog</a></div>
+<div><h4 style="color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem;">Araçlar</h4><a href="vki.html" style="display: block; font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem;">VKİ Hesaplayıcı</a><a href="randevu.html" style="display: block; font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem;">Online Randevu</a><a href="paketler.html" style="display: block; font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem;">Fiyatlar</a></div>
+<div><h4 style="color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem;">İletişim</h4><a href="tel:+905300000000" style="display: block; font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem;">📞 0530 000 00 00</a><a href="mailto:eda@example.com" style="display: block; font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem;">📧 eda@example.com</a><a href="#" style="display: block; font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem;">📍 Kadıköy, İstanbul</a><a href="#" style="display: block; font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem;">Instagram</a></div>
+</div>
+<div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem; text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.6);"><p>© 2025 Dyt. Eda Yılmaz · Tüm Hakları Saklıdır</p></div>
+</footer>
+</body>
+</html>

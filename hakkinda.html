@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hakkımda | Dyt. Eda Yılmaz</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+--green-deep: #2d6a4f;
+--green-mid: #52b788;
+--green-light: #b7e4c7;
+--green-pale: #d8f3dc;
+--orange-soft: #f4a261;
+--cream: #fdfaf6;
+--white: #ffffff;
+--dark: #1a2e23;
+--gray: #6b7280;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); }
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+background: rgba(253,250,246,0.92);
+backdrop-filter: blur(16px);
+border-bottom: 1px solid rgba(45,106,79,0.08);
+padding: 0 2rem;
+height: 70px;
+display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+font-family: 'Playfair Display', serif;
+font-size: 1.4rem; font-weight: 700;
+color: var(--green-deep);
+text-decoration: none;
+}
+.nav-logo span { color: var(--orange-soft); }
+.nav-links { display: flex; gap: 0.5rem; align-items: center; list-style: none; }
+.nav-links a {
+font-size: 0.92rem; font-weight: 500;
+color: var(--dark); text-decoration: none;
+padding: 0.45rem 0.9rem; border-radius: 40px;
+transition: 0.3s;
+}
+.nav-links a:hover { background: var(--green-pale); color: var(--green-deep); }
+.nav-links .cta-nav {
+background: var(--green-deep); color: var(--white);
+padding: 0.5rem 1.2rem; border-radius: 40px;
+font-weight: 600;
+}
+.nav-links .cta-nav:hover { background: var(--green-mid); }
+.container { max-width: 1200px; margin: 0 auto; padding: 100px 2rem 3rem; }
+.about-wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: center; }
+.about-img { position: relative; }
+.about-img-frame { 
+  width: 100%; 
+  aspect-ratio: 3/4; 
+  border-radius: 24px; 
+  background: linear-gradient(135deg, var(--green-light), var(--green-pale)); 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-size: 5rem; 
+  color: var(--green-deep); 
+  overflow: hidden; 
+  position: relative; 
+  box-shadow: 0 20px 60px rgba(45,106,79,0.25);
+  border: 8px solid var(--white);
+}
+.about-img-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(82,183,136,0.1) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+.about-img-frame img { position: relative; z-index: 2; }
+.about-badge { 
+  position: absolute; 
+  bottom: 20px; 
+  right: 20px; 
+  background: var(--white); 
+  border-radius: 16px; 
+  padding: 1rem 1.5rem; 
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2); 
+  text-align: center; 
+  border: 3px solid var(--green-deep);
+  z-index: 10;
+}
+.about-badge strong { 
+  font-family: 'Playfair Display', serif; 
+  font-size: 1.8rem; 
+  color: var(--green-deep); 
+  display: block; 
+}
+.about-badge span { 
+  font-size: 0.75rem; 
+  color: var(--gray); 
+  font-weight: 600;
+}
+.about-content h1 { font-family: 'Playfair Display', serif; font-size: 2.6rem; margin-bottom: 1rem; color: var(--dark); }
+.about-content p { color: var(--gray); line-height: 1.75; margin-bottom: 1.5rem; }
+.certs { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-bottom: 2rem; }
+.cert { background: var(--green-pale); color: var(--green-deep); border-radius: 40px; padding: 0.35rem 0.9rem; font-size: 0.8rem; font-weight: 600; }
+.btn-primary {
+background: var(--green-deep); color: var(--white);
+border: none; border-radius: 40px; padding: 0.85rem 2rem;
+font-size: 0.95rem; font-weight: 600; cursor: pointer;
+transition: 0.3s;
+text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-primary:hover { background: var(--green-mid); }
+@media (max-width: 900px) {
+.about-wrap { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<nav>
+<a href="index.html" class="nav-logo">Dyt. Eda <span>Yılmaz</span></a>
+<ul class="nav-links">
+<li><a href="hakkinda.html">Hakkımda</a></li>
+<li><a href="hizmetler.html">Hizmetler</a></li>
+<li><a href="vki.html">VKİ Hesapla</a></li>
+<li><a href="hikayeler.html">Başarı Hikayeleri</a></li>
+<li><a href="blog.html">Blog</a></li>
+<li><a href="paketler.html">Paketler</a></li>
+<li><a href="randevu.html" class="cta-nav">Randevu Al</a></li>
+</ul>
+</nav>
+
+<div class="container">
+<div class="about-wrap">
+<div class="about-img">
+<div class="about-img-frame"><img src="images/about-image.webp" alt="Diyetisyen Fotoğrafı" style="width:100%; height:100%; object-fit:cover;"></div>
+<div class="about-badge"><strong>8+</strong><span>Yıllık Deneyim</span></div>
+</div>
+<div class="about-content">
+<h1>Beslenmeyi <em style="color:var(--green-mid)">Bilim</em> ile Hayata Taşıyorum</h1>
+<p>Hacettepe Üniversitesi Beslenme ve Diyetetik Bölümü'nden mezun oldum. Yüksek lisansımı klinik beslenme alanında tamamladım. 8 yılı aşkın deneyimimle 500'den fazla danışana sağlıklı bir yaşam kurmalarında yardımcı oldum.</p>
+<p>Her danışanımın hikayesi farklıdır. Bu yüzden standart değil, tamamen size özel programlar oluşturuyorum. Hedefimiz hızlı kilo vermek değil, yaşam boyu sürdürülebilir bir beslenme alışkanlığı kazandırmak.</p>
+<div class="certs">
+<span class="cert">🎓 Klinik Beslenme Uzmanı</span>
+<span class="cert">🏅 Sporcu Beslenmesi Sertifikası</span>
+<span class="cert">👶 Pediatrik Beslenme</span>
+<span class="cert">💊 Tıbbi Beslenme Tedavisi</span>
+</div>
+<a href="randevu.html" class="btn-primary">İlk Görüşmeyi Planla →</a>
+</div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer style="background: var(--dark); color: rgba(255,255,255,0.6); padding: 3rem 2rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 5rem;">
+<div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem;">
+<div><a href="index.html" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--green-mid); text-decoration: none; display: block; margin-bottom: 1rem;">Dyt. Eda <span style="color: var(--orange-soft);">Yılmaz</span></a><p style="font-size: 0.85rem; line-height: 1.7; max-width: 260px;">Bilimsel beslenme danışmanlığı ile sağlıklı, mutlu ve enerjik bir yaşam için yanınızdayım.</p></div>
+<div><h4 style="color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem;">Sayfalar</h4><a href="hakkinda.html" style="display: block; font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem;">Hakkımda</a><a href="hizmetler.html" style="display: block; font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem;">Hizmetler</a><a href="hikayeler.html" style="display: block; font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem;">Başarı Hikayeleri</a><a href="blog.html" style="display: block; font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem;">Blog</a></div>
+<div><h4 style="color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem;">Araçlar</h4><a href="vki.html" style="display: block; font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem;">VKİ Hesaplayıcı</a><a href="randevu.html" style="display: block; font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem;">Online Randevu</a><a href="paketler.html" style="display: block; font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem;">Fiyatlar</a></div>
+<div><h4 style="color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem;">İletişim</h4><a href="tel:+905300000000" style="display: block; font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem;">0530 000 00 00</a><a href="mailto:eda@example.com" style="display: block; font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem;">eda@example.com</a><a href="#" style="display: block; font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem;">Kadıköy, İstanbul</a><a href="#" style="display: block; font-size: 0.85rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem;">Instagram</a></div>
+</div>
+<div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem; text-align: center; font-size: 0.8rem;">© 2025 Dyt. Eda Yılmaz · Tüm Hakları Saklıdır</div>
+</footer>
+</body>
+</html>

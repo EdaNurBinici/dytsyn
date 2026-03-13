@@ -1,0 +1,50 @@
+GÖRSELLER NASIL EKLENIR?
+
+1. KLASÖR KONUMU:
+   - Tüm görseller "images" klasörüne yüklenmelidir
+   - Klasör: C:\Users\EDA NUR\OneDrive\Desktop\diyetisyen\images\
+
+2. GEREKLİ GÖRSELLER:
+
+   a) hero-image.jpg
+      - Kullanım: Ana sayfa hero bölümü
+      - Boyut: 380x460px (veya 3:4 oranında)
+      - Açıklama: Diyetisyen fotoğrafı
+
+   b) about-image.jpg
+      - Kullanım: Hakkımda sayfası
+      - Boyut: 400x533px (3:4 oranında)
+      - Açıklama: Diyetisyen fotoğrafı
+
+   c) blog1-image.jpg
+      - Kullanım: Şekersiz Kek Tarifi yazısı
+      - Boyut: 600x400px
+      - Açıklama: Kek/pasta görseli
+
+   d) blog2-image.jpg
+      - Kullanım: Gece Atıştırmalıkları yazısı
+      - Boyut: 600x400px
+      - Açıklama: Sağlıklı atıştırmalıklar
+
+   e) blog3-image.jpg
+      - Kullanım: Metabolizma yazısı
+      - Boyut: 600x400px
+      - Açıklama: Enerji/spor görseli
+
+3. DOSYA FORMATLAR:
+   - JPG (önerilen)
+   - PNG
+   - WebP
+
+4. YÜKLEME ADIMLAR:
+   a) Görselleri hazırlayın (yukarıdaki boyutlarda)
+   b) images klasörüne kopyalayın
+   c) Dosya adlarını tam olarak yukarıdaki gibi yazın
+   d) Tarayıcıda sayfayı yenileyin (F5)
+
+5. ÖRNEK:
+   - Diyetisyen fotoğrafınızı hero-image.jpg olarak kaydedin
+   - images klasörüne kopyalayın
+   - Ana sayfa otomatik olarak görseli gösterecektir
+
+NOT: Görseller yüklenmezse, sayfa yine çalışacak ama görseller görünmeyecektir.
